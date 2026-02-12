@@ -20,11 +20,18 @@ The system follows a classic RAG architecture, split into two primary pipelines:
 4.  **Vector Storage**: Vectors and metadata are persisted in **ChromaDB**, an open-source vector database.
 
 ### 3.2 Retrieval & Generation Pipeline (Online/User)
-1.  **Query Processing**: User input is received via the Streamlit interface.
-2.  **Semantic Retrieval**: The input is embedded, and a similarity search is performed against ChromaDB to find the top-$k$ relevant context chunks.
-3.  **System Prompting**: A system prompt is constructed combining the retrieved context and the user's question.
-4.  **LLM Inference**: The prompt is sent to **Amazon Nova Pro** via AWS Bedrock.
-5.  **Response Delivery**: The generated text is streamed back to the user interface.
+1.  **Query Input**: User input is received via the Streamlit interface.
+2.  **Query Condensation (History-Aware)**: If chat history exists, a standalone search query is generated using the history and the current question to optimize retrieval.
+3.  **Semantic Retrieval**: The condensed query is embedded, and a similarity search is performed against ChromaDB.
+4.  **Meta-History Detection**: If the user asks about the conversation itself, the system skips vector retrieval and answers based on history.
+5.  **Context-Grounded Generation**: A system prompt combines retrieval context, chat history, and the user's question.
+6.  **LLM Inference**: The prompt is processed by the configured LLM (AWS Bedrock Nova Pro or Local Ollama).
+7.  **Response Delivery**: Generated text is streamed to the UI with source citations.
+
+### 3.3 Evaluation Pipeline (Validation)
+1.  **LLM Judge**: Automated evaluation of responses for Faithfulness and Relevancy using high-reasoning models.
+2.  **RAGAS Framework**: Multi-metric evaluation (Context Recall, Precision, Faithfulness, etc.) using the RAGAS library.
+3.  **Combined Reporting**: Generation of CSV reports capturing qualitative and quantitative metrics.
 
 ## 4. Component Details
 
@@ -34,10 +41,11 @@ The system follows a classic RAG architecture, split into two primary pipelines:
 *   Provides a single source of truth for application constants.
 
 ### 4.2 Application Logic (`src/`)
-*   **`embeddings.py`**: Custom wrapper for Bedrock embeddings with built-in token truncation (max 8000 tokens) to ensure API compatibility.
-*   **`vector_store.py`**: Manages the lifecycle of the Chroma database. Handles both persistence (writing) and similarity searches (reading).
-*   **`llm_engine.py`**: The orchestrator. It manages the prompt templates and coordinates the "Retrieval" and "Generation" steps.
-*   **`logger.py`**: Implements a `RotatingFileHandler` system to ensure application activity is tracked without exhausting disk space.
+*   **`engine.py`**: The central orchestrator. It manages query condensation, retrieval routing, response generation, and automated evaluation.
+*   **`llm/`**: A modular provider system supporting both AWS Bedrock (Nova, Titan) and Local LLMs (Ollama).
+*   **`embeddings.py`**: Custom wrapper for Bedrock/Local embeddings with built-in token truncation and retry logic.
+*   **`vector_store.py`**: Manages the lifecycle of ChromaDB. Handles persistence, chunking, and similarity search.
+*   **`logger.py`**: Implements a `RotatingFileHandler` system for production-grade auditing.
 
 ### 4.3 User Interface (`app.py`)
 *   Built using **Streamlit**.
@@ -66,6 +74,6 @@ The system follows a classic RAG architecture, split into two primary pipelines:
 *   **Local Data**: Source documents and vector indices remain within the host environment, ensuring data privacy for proprietary airline documents.
 
 ## 8. Future Roadmap
-*   **Reranking**: Integrate a cross-encoder reranker to improve the relevance of retrieved context.
-*   **Multi-Modal Support**: Expand to handle images in PDFs (e.g., flight maps or infographics) using Nova's multi-modal capabilities.
-*   **Evaluation Framework**: Implement RAGAS or similar frameworks to quantify retrieval accuracy and generation quality.
+*   **Reranking**: Integrate a cross-encoder reranker to further improve context relevance.
+*   **Agentic Workflows**: Implement multi-step reasoning agents for complex policy analysis.
+*   **Vector DB Cloud**: Migrate to Amazon OpenSearch for large-scale enterprise deployments.
