@@ -10,6 +10,9 @@ A production-grade **Retrieval-Augmented Generation (RAG)** system designed to p
 
 - **🧠 Intelligent Q&A**: Context-aware answers powered by Amazon Nova Pro.
 - **🔍 Semantic Search**: High-performance document retrieval using Titan Text Embeddings v2.
+- **💬 Chat History**: Multi-turn conversation support with intelligent query condensation.
+- **📊 RAGAS Evaluation**: Quantifiable metrics (Faithfulness, Relevancy, etc.) for pipeline performance.
+- **⚖️ LLM as a Judge**: Automated quality scoring and hallucination detection using LLM reasoning.
 - **📂 Multi-Document Support**: Process and query complex PDF documents seamlessly.
 - **🛡️ Production Ready**: Modular architecture, robust error handling, and structured logging.
 - **💻 Modern UI**: Responsive chat interface with history and real-time streaming effects.
@@ -30,9 +33,10 @@ The system follows a standard RAG pipeline:
 
 ## 🛠️ Tech Stack
 
-- **Large Language Model (LLM)**: [AWS Bedrock](https://aws.amazon.com/bedrock/) (Amazon Nova Pro)
-- **Embeddings**: Amazon Titan Text Embeddings v2
+- **Large Language Model (LLM)**: [AWS Bedrock](https://aws.amazon.com/bedrock/) (Amazon Nova Pro) / Local (Ollama)
+- **Embeddings**: Amazon Titan Text Embeddings v2 / HuggingFace Local
 - **Vector Database**: [ChromaDB](https://www.trychroma.com/)
+- **Evaluation**: [RAGAS](https://docs.ragas.io/), LLM as a Judge
 - **Frontend Framework**: [Streamlit](https://streamlit.io/)
 - **Orchestration**: [LangChain](https://www.langchain.com/)
 - **Containerization**: [Docker](https://www.docker.com/)
@@ -51,7 +55,8 @@ The system follows a standard RAG pipeline:
 │   ├── vector_store.py   # ChromaDB management & document processing
 │   ├── llm_engine.py     # RAG pipeline & Bedrock logic
 │   └── ingest_data.py    # Command-line tool for document ingestion
-├── tests/                # Automated test suite
+├── tests/                # Automated test suite (Quality, RAGAS, Combined)
+├── reports/              # Generated performance and quality reports
 ├── logs/                 # Persistent log storage
 ├── AirIndia/             # Default directory for source PDF files
 ├── app.py                # Main Streamlit application
@@ -133,9 +138,19 @@ tail -n 50 logs/app.log
 
 ## 🧪 Development
 
-### Running Tests
+### Running Standard Quality Tests (LLM Judge)
 ```bash
-make test
+make report
+```
+
+### Running RAGAS Evaluation
+```bash
+make ragas-report
+```
+
+### Running Combined Evaluation (Judge + RAGAS)
+```bash
+make combined-report
 ```
 
 ### Code Formatting
