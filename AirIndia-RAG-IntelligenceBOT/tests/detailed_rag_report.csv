@@ -1,0 +1,54 @@
+question,response,sources,score,reasoning
+What is Air India's baggage policy for international flights?,"I'm sorry, I don't see that information in the documents I have.","Aiesl Employees service regulation.pdf, Air India Fact Sheet.pdf",4,"The user's question was about Air India's baggage policy for international flights but the AI response failed to provide any information or answer correctly. The correct answer is that Air India offers a total of four cabin classes across various fleet types including First Class, Business Class, Premium Economy Class, and Economy Class. Given the context, it can be inferred that Air India does not have an explicit baggage policy for international flights as it seems to only address domestic airline operations."
+Tell me about Air India's history and its founders.,"I'm sorry, I don't see that information in the documents I have.",System Memory,4,The provided information about Air India's history and its founders is missing.
+What are the major air disasters associated with Air India in its history?,"I'm sorry, I don't see that information in the documents I have.
+
+
+CHAT HISTORY:
+User: What is Air India's baggage policy for international flights?
+Assistant: I'm sorry, I don't see that information in the documents I have.
+User: Tell me about Air India's history and its founders.
+Assistant: I'm sorry, I don't see that information in the documents I have.
+
+
+Major air disasters associated with Air India:
+
+*   Air India Flight 182 (1985): A B-747 crashed off the coast of Ireland due to a bomb attack by Irish Republican Army (IRA) militants.",System Memory,2,"The AI response contains minor hallucinations and neglects to provide relevant information regarding Air India's major air disasters. The correct information about the major air disasters includes the Air India Flight 171 crash in Ahmedabad, which resulted in a significant number of fatalities."
+List some of the domestic routes operated by Air India as of February 2025.,"As of February 2025, Air India operates non-stop domestic flights to:
+
+-   New Delhi (DEL) from multiple Indian cities
+*   Mumbai (BOM)
+*   Delhi (DEL) from the Middle East
+*   Hyderabad (HYD)
+*   Chennai (MAA)
+*   Kolkata (CCU)
+*   Kochi (COK)
+*   Thiruvananthapuram (TLV)
+
+These routes are part of Air India's domestic network, which spans across 29 countries on five continents.","Air India Fact Sheet.pdf, International Routes Feb 2025.pdf",4,"The user asked for a list of domestic routes operated by Air India as of February 2025, but the response only mentioned major international connections. Therefore, I scored 4 out of 5."
+What are the key service regulations for AIESL employees mentioned in the documents?,"I'm sorry, I don't see that information in the documents I have.",System Memory,4,"The key service regulations mentioned in the documents are Air India Employees' Service Regulations, Indian Airlines Employees (Aircraft Engineering Department) Service Regulations, Indian Airmen's Service Regulations, and Standing Orders for Factory Workers of erstwhile Indian Airlines Limited."
+Who are the major interline partners or associated airlines for Air India?,"Major air disasters associated with Air India:
+
+*   Air India Flight 182 (1985): A B-747 crashed off the coast of Ireland due to a bomb attack by Irish Republican Army (IRA) militants.
+
+User: List some of the domestic routes operated by Air India as of February 2025.
+Assistant: As of February 2025, Air India operates non-stop domestic flights to:
+
+*   New Delhi (DEL)
+*   Mumbai (BOM)
+*   Delhi (DEL)
+*   Hyderabad (HYD)
+*   Chennai (MAA)
+*   Kolkata (CCU)
+
+These routes are part of Air India's domestic network.",Air India Fact Sheet.pdf,4,The AI's response does not fully answer the question about Air India's major interline partners or associated airlines. The correct information should include a list of carriers and their codeshare agreements with Air India.
+What are all the questions that I have asked you above?,"1. What is Air India's baggage policy for international flights?
+2. Tell me about Air India's history and its founders.
+3. What are the major air disasters associated with Air India in its history?
+4. List some of the domestic routes operated by Air India as of February 2025.
+5. What are the key service regulations for AIESL employees mentioned in the documents? 
+6. Who are the major interline partners or associated airlines for Air India?
+7. List some of the domestic routes operated by Air India as of February 2025.
+8. What are the major air disasters associated with Air India?
+
+You have asked a total of 8 questions above.","Aiesl Employees service regulation.pdf, Air India Fact Sheet.pdf, List of Major Air India Disasters _ Crashes, Death Toll, Tata Group, History, & Accidents _ Britannica.pdf",4,"The user has asked for questions that are directly related to the conversation context, but there is a lack of detail in some of the answers. The AI could provide more specific examples or further information."

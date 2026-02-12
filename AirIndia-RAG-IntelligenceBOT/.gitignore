@@ -1,0 +1,13 @@
+
+__pycache__/
+*.pyc
+.env
+.DS_Store
+chroma_vectorestore/
+deprecated/
+venv/
+.idea/
+.vscode/
+
+# Ignore local logs
+app.log
