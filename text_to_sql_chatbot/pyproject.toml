@@ -1,0 +1,19 @@
+[project]
+name = "text-to-sql-chatbot"
+version = "0.1.0"
+description = "A production-grade Text-to-SQL Chatbot using LangChain and Gemini."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.10",
+    "langchain-google-genai>=0.0.5",
+    "pymysql>=1.1.0",
+    "pydantic-settings>=2.0.0",
+    "langgraph>=0.0.10",
+    "cryptography>=42.0.0" # often needed for sql alchemy / mysql connectors
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
